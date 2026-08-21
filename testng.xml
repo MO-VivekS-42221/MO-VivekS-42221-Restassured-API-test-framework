@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="API Automation Test Suite" verbose="2" parallel="tests" thread-count="3">
+
+    <!-- Listener Configuration -->
+    <listeners>
+        <listener class-name="com.api.automation.listeners.TestListener"/>
+    </listeners>
+
+    <!-- Test Configuration for Post API -->
+    <test name="Post API Tests" enabled="true">
+        <classes>
+            <class name="com.api.automation.tests.PostAPITest">
+                <methods>
+                    <include name="testGetAllPosts"/>
+                    <include name="testGetPostById"/>
+                    <include name="testGetPostsByUserId"/>
+                    <include name="testCreatePost"/>
+                    <include name="testUpdatePost"/>
+                    <include name="testPartialUpdatePost"/>
+                    <include name="testDeletePost"/>
+                    <include name="testGetNonExistentPost"/>
+                    <include name="testPostResponseStructure"/>
+                    <include name="testPostTitleLength"/>
+                    <include name="testPostPagination"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Test Configuration for User API -->
+    <test name="User API Tests" enabled="true">
+        <classes>
+            <class name="com.api.automation.tests.UserAPITest">
+                <methods>
+                    <include name="testGetAllUsers"/>
+                    <include name="testGetUserById"/>
+                    <include name="testGetUserByUsername"/>
+                    <include name="testCreateUser"/>
+                    <include name="testUpdateUser"/>
+                    <include name="testDeleteUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Test Configuration for Authentication -->
+    <test name="Authentication Tests" enabled="true">
+        <classes>
+            <class name="com.api.automation.tests.AuthenticationTest">
+                <methods>
+                    <include name="testValidLogin"/>
+                    <include name="testInvalidLogin"/>
+                    <include name="testMissingCredentials"/>
+                    <include name="testTokenGeneration"/>
+                    <include name="testTokenValidation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Smoke Test Suite -->
+    <test name="Smoke Tests" enabled="true">
+        <classes>
+            <class name="com.api.automation.tests.PostAPITest">
+                <methods>
+                    <include name="testGetAllPosts"/>
+                    <include name="testGetPostById"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.UserAPITest">
+                <methods>
+                    <include name="testGetAllUsers"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
